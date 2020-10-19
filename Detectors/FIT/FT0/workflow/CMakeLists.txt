@@ -20,6 +20,7 @@ o2_add_library(FT0Workflow
                        src/FT0DataProcessDPLSpec.cxx
                        src/FT0DataReaderDPLSpec.cxx
                        src/FT0DigitWriterDPLSpec.cxx
+                       src/FT0DataProducer.cxx
                        PUBLIC_LINK_LIBRARIES O2::Framework
                                      O2::DataFormatsFT0
                                      O2::FT0Reconstruction
@@ -40,6 +41,11 @@ o2_add_executable(entropy-encoder-workflow
 
 o2_add_executable(digits-reader-workflow
                   SOURCES src/digits-reader-workflow.cxx
+                  COMPONENT_NAME ft0
+                  PUBLIC_LINK_LIBRARIES O2::FT0Workflow)
+
+o2_add_executable(data-producer
+                  SOURCES src/FT0DataProducer.cxx
                   COMPONENT_NAME ft0
                   PUBLIC_LINK_LIBRARIES O2::FT0Workflow)
 
